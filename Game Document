@@ -1,0 +1,35 @@
+>-- Base du jeu --<
+
+fonctionnement par missions à réaliser, [quotidienne ou hebdomadaire],
+Et d'une quête principal évoluant au fil du jeu (en débloquant des améliorations ou avançant dans le jeu ex : nouvelle zone).
+présence d'une jauge de dérèglement climatique si la jauge atteint son max [Game over], plus la jauge est haute [Chance accrue d'évènements ou rien],
+présence d'événements [aléatoire ou non] pouvant pénaliser le joueur [game over ou baisse de la jauge de dérèglement climatique],
+Présence d'une zone principal et de sous zone (ex: plage, montagne, marrais, désert) avec des effets et actions différentes [Achetable et/ou Déblocable],
+Système de saison pouvant impacter les [missions et/ou évènements]
+
+DA (partie graphique) :
+Graphisme comme [stardew valley],
+Animation simple, peu complexe mais compréhensible,
+
+Audio :
+Audio : audio simple réalisé avec des objets du quotidien (ex: bruit de cannette pour récupérer des déchets)
+
+Fins :
+Game Over -> Fin du jeu
+Fins de l'histoire, après avoir [débloqué les différentes zones, obtenu des indices ou objets précis] permettent d'arrêter le vilain qui s'amuse à polluer le parc
+
+
+
+>-- Partie Graphique --<
+
+La création de la partie graphique sera réalisé par Achraf et Gregg, composé d'une partie animation et pixel art, elle devra permettre de fournir des assets pour la partie développement (Les tâches devront être séparé)
+
+Exemple de graphisme : Stardew Valley, 
+
+
+- Pixel Art (PA)
+
+
+
+
+- Animation (A)
