@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class PickUpObject : MonoBehaviour
 {
 
-    private bool interactUi = false;
+    public bool interactUi = false;
 
     void Awake()
     {
@@ -15,6 +15,7 @@ public class PickUpObject : MonoBehaviour
     {
         if (interactUi == true && Input.GetKey(KeyCode.E))
         {
+            Destroy(gameObject);
             Debug.Log("Works");
             Inventory.instance.AddTrash(1);
         }

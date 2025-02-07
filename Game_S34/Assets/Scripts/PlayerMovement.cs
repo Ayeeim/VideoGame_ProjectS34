@@ -8,8 +8,8 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isSprinting = false;
 
-    public float movementSpeed = 4f;
-    public float sprintingSpeed =  7f;
+    public float movementSpeed = 3f;
+    public float sprintingSpeed =  6f;
 
 
     Vector2 dir;
@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             isSprinting = false;
-            movementSpeed = 4f;
+            movementSpeed = 3f;
         }
     }
 }
