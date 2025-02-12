@@ -6,11 +6,6 @@ public class PickUpObject : MonoBehaviour
 
     public bool interactUi = false;
 
-    void Awake()
-    {
-        
-    }
-
     private void Update()
     {
         if (interactUi == true && Input.GetKey(KeyCode.E))
@@ -29,13 +24,14 @@ public class PickUpObject : MonoBehaviour
         {
             Debug.Log("Enter");
             interactUi = true;
+            //Canvas.PickUp.text 
+            //Show text 
         }
 
 
         if (Input.GetKey(KeyCode.E))
         {
             Debug.Log("TTTT2");
-            interactUi = false;
         }
     }
 
@@ -46,6 +42,8 @@ public class PickUpObject : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Debug.Log("Exit");
+            interactUi = false;
+            //Unshow text 
         }
 
     }

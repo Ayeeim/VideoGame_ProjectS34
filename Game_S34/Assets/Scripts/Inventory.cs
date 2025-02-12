@@ -23,9 +23,9 @@ public class Inventory : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void AddTrash(int count)
+    public void AddTrash(int _count)
     {
-        triangleCount += count;
+        triangleCount += _count;
         Debug.Log("A trash has been added to the count");
     }
 }
