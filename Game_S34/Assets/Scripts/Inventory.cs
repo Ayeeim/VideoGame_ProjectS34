@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Inventory : MonoBehaviour
 {
@@ -8,6 +7,7 @@ public class Inventory : MonoBehaviour
     public int triangleCount;
 
     public static Inventory instance;
+    public TextMeshProUGUI triangleCountText;
 
     // Awake is called before the game starts
     private void Awake()
@@ -26,6 +26,7 @@ public class Inventory : MonoBehaviour
     public void AddTrash(int _count)
     {
         triangleCount += _count;
+        triangleCountText.text = "Trash collected : " + triangleCount.ToString();
         Debug.Log("A trash has been added to the count");
     }
 }

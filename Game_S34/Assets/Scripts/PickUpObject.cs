@@ -1,10 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PickUpObject : MonoBehaviour
 {
 
     public bool interactUi = false;
+
+    public TextMeshProUGUI textPickUp;
 
     private void Update()
     {
@@ -18,18 +21,16 @@ public class PickUpObject : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("t");
 
         if (collision.CompareTag("Player"))
         {
             Debug.Log("Enter");
+            textPickUp.gameObject.SetActive(true); // affiche le texte PickUp
             interactUi = true;
-            //Canvas.PickUp.text 
-            //Show text 
+
         }
 
-
-        if (Input.GetKey(KeyCode.E))
+            if (Input.GetKey(KeyCode.E))
         {
             Debug.Log("TTTT2");
         }
@@ -42,6 +43,7 @@ public class PickUpObject : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Debug.Log("Exit");
+            textPickUp.gameObject.SetActive(false);
             interactUi = false;
             //Unshow text 
         }
