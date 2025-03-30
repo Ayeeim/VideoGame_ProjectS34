@@ -1,7 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+
 
 public class CameraControl : MonoBehaviour
 {
@@ -13,11 +12,11 @@ public class CameraControl : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        if (Input.GetKey(KeyCode.WheelUp))
+    {/*
+        if (PickUp)
         {
             Debug.Log("AHAHA");
-        }
+        }*/
         
     }
 }
