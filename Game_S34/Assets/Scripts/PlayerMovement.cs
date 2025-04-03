@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     public InputActionReference moveAction;
+    public InputActionReference sprintAction;
 
     public Rigidbody2D rb;
 
@@ -21,6 +22,10 @@ public class PlayerMovement : MonoBehaviour
         moveAction.action.performed += onMoveActionPerf;
         moveAction.action.canceled += onMoveActionCanceled;
         moveAction.action.Enable();
+
+        sprintAction.action.performed += onSprintActionPerf;
+        sprintAction.action.canceled += onSprintActionCanceled;
+        sprintAction.action.Enable();
     }
 
     private void OnDisable()
@@ -28,6 +33,20 @@ public class PlayerMovement : MonoBehaviour
         moveAction.action.performed -= onMoveActionPerf;
         moveAction.action.canceled -= onMoveActionCanceled;
         moveAction.action.Disable();
+
+        sprintAction.action.performed -= onSprintActionPerf;
+        sprintAction.action.canceled -= onSprintActionCanceled;
+        sprintAction.action.Disable();
+    }
+
+    private void onSprintActionCanceled(InputAction.CallbackContext obj)
+    {
+        movementSpeed = 3f;
+    }
+
+    private void onSprintActionPerf(InputAction.CallbackContext obj)
+    {
+        movementSpeed = sprintingSpeed;
     }
 
     private void onMoveActionCanceled(InputAction.CallbackContext obj)

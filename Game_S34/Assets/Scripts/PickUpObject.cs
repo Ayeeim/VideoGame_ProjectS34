@@ -1,22 +1,39 @@
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class PickUpObject : MonoBehaviour
 {
 
+    public InputActionReference interAction;
+
     public bool interactUi = false;
+    public TextMeshProUGUI textInteraction;
 
-    public TextMeshProUGUI textPickUp;
-
-    private void Update()
+    private void Awake()
     {
-        if (interactUi == true && Input.GetKey(KeyCode.E))
-        {
-            Destroy(gameObject);
-            Debug.Log("Works");
-            Inventory.instance.AddTrash(1);
-        }
+        textInteraction = GameObject.FindGameObjectWithTag("InteractUI").GetComponent<TextMeshProUGUI>();
+    }
+
+    private void OnEnable()
+    {
+        interAction.action.started += onInterActionStarted;
+        interAction.action.Enable();
+
+    }
+
+    private void OnDisable()
+    {
+        interAction.action.started -= onInterActionStarted;
+        interAction.action.Disable();
+    }
+
+    private void onInterActionStarted(InputAction.CallbackContext obj)
+    {
+        Debug.Log("E has been pressed");
+        Destroy(gameObject);
+        Debug.Log("Works");
+        Inventory.instance.AddTrash(1);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -25,25 +42,20 @@ public class PickUpObject : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Debug.Log("Enter");
-            textPickUp.gameObject.SetActive(true); // affiche le texte PickUp
+            textInteraction.enabled = true; // affiche le texte PickUp
+
             interactUi = true;
 
-        }
-
-            if (Input.GetKey(KeyCode.E))
-        {
-            Debug.Log("TTTT2");
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
-    {
-       Debug.Log("t2");
-    
+    {    
         if (collision.CompareTag("Player"))
         {
             Debug.Log("Exit");
-            textPickUp.gameObject.SetActive(false);
+            textInteraction.enabled = false;
+
             interactUi = false;
             //Unshow text 
         }
