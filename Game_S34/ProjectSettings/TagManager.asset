@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Cinemachine
   - InteractUI
+  - Trash
   layers:
   - Default
   - TransparentFX
