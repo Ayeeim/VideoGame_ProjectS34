@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7627866275998627233}
   m_Layer: 0
   m_Name: Trash
-  m_TagString: Untagged
+  m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,7 +103,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interAction: {fileID: -7327851877376996968, guid: 5978f7f84046b234fb22a954c8272248, type: 3}
   interactUi: 0
-  textPickUp: {fileID: 5195012617518783156, guid: ab2ae020b601ee34d90a34d22ab7112d, type: 3}
 --- !u!58 &7627866275998627233
 CircleCollider2D:
   m_ObjectHideFlags: 0
