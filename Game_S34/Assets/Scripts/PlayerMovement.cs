@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isSprinting = false;
 
     public float movementSpeed = 3f;
-    public float sprintingSpeed =  6f;
+    private float sprintingSpeed =  6f;
 
 
     Vector2 dir;
@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void onSprintActionCanceled(InputAction.CallbackContext obj)
     {
-        movementSpeed = 3f;
+        movementSpeed = 4f;
     }
 
     private void onSprintActionPerf(InputAction.CallbackContext obj)
@@ -70,15 +70,5 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.MovePosition(rb.position + dir * movementSpeed * Time.fixedDeltaTime);
 
-        /*if (Input.GetKey(KeyCode.LeftControl))
-        {
-            isSprinting= true;
-            movementSpeed = sprintingSpeed;
-        }
-        else
-        {
-            isSprinting = false;
-            movementSpeed = 3f;
-        }*/
     }
 }

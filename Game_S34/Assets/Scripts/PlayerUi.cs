@@ -12,9 +12,8 @@ public class CameraControl : MonoBehaviour
 
         if (collision.CompareTag("Trash") || collision.CompareTag("InteractUI"))
         {
-            Debug.Log("Enter");
-            textInteraction.enabled = true; // affiche le texte PickUp
-
+            textInteraction.enabled = true;
+            //show text 
         }
     }
 
@@ -22,10 +21,7 @@ public class CameraControl : MonoBehaviour
     {
         if (collision.CompareTag("Trash") || collision.CompareTag("InteractUI"))
         {
-            Debug.Log("Exit");
             textInteraction.enabled = false;
-
-            interactUi = false;
             //Unshow text 
         }
 

@@ -13,7 +13,6 @@ public class PickUpObject : MonoBehaviour
     {
         if (interAction.action.IsPressed() && interactUi == true)
         {
-            Debug.Log("Button has beeeeeeeen pressed");
             Destroy(gameObject);
             Inventory.instance.AddTrash(1);
         }
@@ -23,11 +22,7 @@ public class PickUpObject : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("Enter");
-
             interactUi = true;
-            // affiche le texte PickUp
-
         }
     }
 
@@ -35,9 +30,7 @@ public class PickUpObject : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("Exit");
             interactUi = false;
-            //Unshow text 
         }
 
     }
