@@ -11,6 +11,8 @@ public class DaySystem : MonoBehaviour
 
     public float targetTime = 180.0f;
     public float actualTime = 0f;
+
+    public Animator fadeSystem;
     public bool onPauseMenu = false;
 
     private void Update()
@@ -19,8 +21,8 @@ public class DaySystem : MonoBehaviour
         {
             actualTime += Time.deltaTime;
         }
-        else if(targetTime <= actualTime) 
-        {  
+        else if (targetTime <= actualTime)
+        {
             dayEnd();
         }
         else
@@ -32,10 +34,13 @@ public class DaySystem : MonoBehaviour
 
     private void dayEnd()
     {
+        fadeSystem.SetTrigger("FadeIn");
         Debug.Log("One day has passed");
         actualTime = 0f;
         dayCount++;
-        trashObjective = Mathf.RoundToInt(trashObjective + trashObjective*(0.1f *  dayCount));
+        trashObjective = Mathf.RoundToInt(trashObjective + 45 * (0.1f * dayCount));
         // Une sauvegarde automatique peut être effectué ici (juste besoin d'appeler de script de save)
+        fadeSystem.SetTrigger("FadeOut");
+
     }
 }
