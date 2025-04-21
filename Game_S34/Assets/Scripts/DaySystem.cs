@@ -1,9 +1,12 @@
 using System;
+using TMPro;
 using UnityEngine;
+using System.Collections;
 
 public class DaySystem : MonoBehaviour
 {
-    public float dayCount = 1f;
+    public int dayCount = 0;
+    public TextMeshProUGUI dayCountText;
     public int trashObjective = 45;
 
     // Timer qui s'exécute, dès que le timer se fini un nouveau jour est lancé
@@ -17,13 +20,15 @@ public class DaySystem : MonoBehaviour
 
     private void Update()
     {
-        if (targetTime > actualTime && dayCount < 7 && onPauseMenu != true)
+        if (targetTime > actualTime && dayCount < 8 && onPauseMenu != true)
         {
             actualTime += Time.deltaTime;
         }
-        else if (targetTime <= actualTime)
+        else if (targetTime < actualTime)
         {
-            dayEnd();
+            Debug.Log("Idiot");
+            fadeSystem.SetBool("FadeIn", true);
+            fadeSystem.SetBool("FadeOut", false);
         }
         else
         {
@@ -32,15 +37,14 @@ public class DaySystem : MonoBehaviour
         }
     }
 
-    private void dayEnd()
+    public void DayEnd()
     {
-        fadeSystem.SetTrigger("FadeIn");
         Debug.Log("One day has passed");
-        actualTime = 0f;
         dayCount++;
+        actualTime = 0f;
         trashObjective = Mathf.RoundToInt(trashObjective + 45 * (0.1f * dayCount));
-        // Une sauvegarde automatique peut être effectué ici (juste besoin d'appeler de script de save)
-        fadeSystem.SetTrigger("FadeOut");
-
+        dayCountText.text = "Jour " + dayCount.ToString();
+        fadeSystem.SetBool("FadeIn", false);
+        fadeSystem.SetBool("FadeOut", true);
     }
 }
