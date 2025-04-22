@@ -8,6 +8,7 @@ TagManager:
   - InteractUI
   - Trash
   - fade
+  - PlayerSpawn
   layers:
   - Default
   - TransparentFX

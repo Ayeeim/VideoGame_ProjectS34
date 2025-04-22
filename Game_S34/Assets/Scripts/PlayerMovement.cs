@@ -75,15 +75,14 @@ public class PlayerMovement : MonoBehaviour
 
     void Flip(float _velocity)
     {
+        // Turn the player sprite either to the left or to the right
         if (_velocity >= 0.1f)
         {
-            Debug.Log("Mouvement droite");
             spriteRenderer.flipX = false;
 
         }
         else if (_velocity < -0.1f)
         {
-            Debug.Log("Mouvement gauche");
             spriteRenderer.flipX = true;
         }
     }
