@@ -1,7 +1,5 @@
-using System;
 using TMPro;
 using UnityEngine;
-using System.Collections;
 
 public class DaySystem : MonoBehaviour
 {
@@ -39,11 +37,15 @@ public class DaySystem : MonoBehaviour
 
     public void DayEnd()
     {
+        // Is called at the end of a day (at the end of the animation FadeIn)
         Debug.Log("One day has passed");
+
         dayCount++;
         actualTime = 0f;
         trashObjective = Mathf.RoundToInt(trashObjective + 45 * (0.1f * dayCount));
         dayCountText.text = "Jour " + dayCount.ToString();
+
+
         fadeSystem.SetBool("FadeIn", false);
         fadeSystem.SetBool("FadeOut", true);
     }
