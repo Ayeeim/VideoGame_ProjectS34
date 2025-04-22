@@ -2,7 +2,7 @@ using UnityEngine;
 using TMPro;
 
 
-public class CameraControl : MonoBehaviour
+public class PlayerUI : MonoBehaviour
 {
     public TextMeshProUGUI textInteraction;
     public bool interactUi = false;

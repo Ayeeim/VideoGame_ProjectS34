@@ -4,10 +4,12 @@ using TMPro;
 public class Inventory : MonoBehaviour
 {
 
-    public int triangleCount;
+    public int trashCount;
+
+    public DaySystem daySystem;
 
     public static Inventory instance;
-    public TextMeshProUGUI triangleCountText;
+    public TextMeshProUGUI trashCountText;
 
     // Awake is called before the game starts
     private void Awake()
@@ -19,14 +21,23 @@ public class Inventory : MonoBehaviour
             return;
         }
 
-        instance= this;
+        trashCountText.text = "Déchets ramassé : " + trashCount.ToString() + " sur " + daySystem.trashObjective.ToString();
+
+        instance = this;
     }
 
     // Update is called once per frame
     public void AddTrash(int _count)
     {
-        triangleCount += _count;
-        triangleCountText.text = "Trash collected : " + triangleCount.ToString();
+        trashCount += _count;
+        trashCountText.text = "Déchets ramassé : " + trashCount.ToString() + " sur " + daySystem.trashObjective.ToString();
         Debug.Log("A trash has been added to the count");
+    }
+
+    public void TrashReset()
+    {
+        trashCount = 0;
+        trashCountText.text = "Déchets ramassé : " + trashCount.ToString() + " sur " + daySystem.trashObjective.ToString();
+        Debug.Log("Trash count has been reseted");
     }
 }

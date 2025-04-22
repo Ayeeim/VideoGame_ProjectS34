@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public float movementSpeed = 3f;
     private float sprintingSpeed =  6f;
 
+    public SpriteRenderer spriteRenderer;
 
     Vector2 dir;
 
@@ -69,6 +70,20 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         rb.MovePosition(rb.position + dir * movementSpeed * Time.fixedDeltaTime);
+        Flip(dir.x);
+    }
 
+    void Flip(float _velocity)
+    {
+        // Turn the player sprite either to the left or to the right
+        if (_velocity >= 0.1f)
+        {
+            spriteRenderer.flipX = false;
+
+        }
+        else if (_velocity < -0.1f)
+        {
+            spriteRenderer.flipX = true;
+        }
     }
 }
