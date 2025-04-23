@@ -8,6 +8,7 @@ public class Inventory : MonoBehaviour
 
     public static Inventory instance;
     public TextMeshProUGUI triangleCountText;
+    public string activeItem;
 
     // Awake is called before the game starts
     private void Awake()
