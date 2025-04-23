@@ -37,7 +37,6 @@ public class DaySystem : MonoBehaviour
 
             if (heureActualTime >= 15f)
             {
-                Debug.Log("GOOG");
                 heureCompteur++;
                 heureActualTime = 0;
 
@@ -70,6 +69,7 @@ public class DaySystem : MonoBehaviour
 
         playerTransform.position = playerSpawn.position; // Reset the player position
         Inventory.instance.TrashReset(); // Reset the trash count 
+        hourCountText.text = "8:00";
 
         fadeSystem.SetBool("FadeIn", false);
         fadeSystem.SetBool("FadeOut", true);
