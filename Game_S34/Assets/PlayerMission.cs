@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMission : MonoBehaviour
 {
@@ -17,5 +18,11 @@ public class PlayerMission : MonoBehaviour
     {
         currentChaos += chaos;
         missionBar.SetMission(currentChaos);
+
+        if(currentChaos > 100)
+        {
+            SceneManager.LoadScene("losing_screen");
+
+        }
     }
 }
