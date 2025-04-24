@@ -8,6 +8,9 @@ public class SettingsInteraction : MonoBehaviour
     public GameObject panel;
     private float lastToggleTime; //Pour eviter le spam de l'UI
     public bool isOpen;
+    public DaySystem daySystem;
+    public PlayerMovement playerMovement;
+
 
 
     private void FixedUpdate()
@@ -18,14 +21,26 @@ public class SettingsInteraction : MonoBehaviour
             {
                 panel.SetActive(true);
                 isOpen = true;
+                daySystem.onPauseMenu = true;
+                playerMovement.movementEnabled = false;
             } else
             {
                 panel.SetActive(false);
                 isOpen = false;
+                daySystem.onPauseMenu = false;
+                playerMovement.movementEnabled = true;
             }
 
             lastToggleTime = Time.time;
         }
+    }
+
+    public void quitMenu()
+    {
+        panel.SetActive(false);
+        isOpen = false;
+        daySystem.onPauseMenu = false;
+        playerMovement.movementEnabled = true;
     }
 
 
