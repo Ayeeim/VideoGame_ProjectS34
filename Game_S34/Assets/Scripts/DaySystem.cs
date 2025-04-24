@@ -14,7 +14,7 @@ public class DaySystem : MonoBehaviour
     public float targetTime = 180.0f;
     public float actualTime = 0f;
 
-    public int heureCompteur = 0;
+    [SerializeField] private int heureCompteur = 0;
     public float heureActualTime = 0f; 
 
     public Animator fadeSystem;
@@ -23,6 +23,8 @@ public class DaySystem : MonoBehaviour
     private Transform playerSpawn;
     public Transform playerTransform;
 
+    [SerializeField] private SpawnZoneTrash spawnZoneTrash;
+
     private void Awake()
     {
         playerSpawn = GameObject.FindGameObjectWithTag("PlayerSpawn").transform;
@@ -30,14 +32,13 @@ public class DaySystem : MonoBehaviour
 
     private void Update()
     {
-        if (targetTime > actualTime && dayCount < 8 && onPauseMenu != true)
+        if (targetTime > actualTime && dayCount <= 7 && onPauseMenu != true)
         {
             actualTime += Time.deltaTime;
             heureActualTime += Time.deltaTime;
 
             if (heureActualTime >= 15f)
             {
-                Debug.Log("GOOG");
                 heureCompteur++;
                 heureActualTime = 0;
 
@@ -62,14 +63,18 @@ public class DaySystem : MonoBehaviour
         Debug.Log("One day has passed");
 
         dayCount++;
-        actualTime = 0f;
-        trashObjective = Mathf.RoundToInt(trashObjective + 45 * (0.1f * dayCount));
+        trashObjective = Mathf.RoundToInt(trashObjective + 35 * (0.1f * dayCount));
         dayCountText.text = "Jour " + dayCount.ToString();
+
+        // Reset les variables communes et les objets dans la scène
+        actualTime = 0f;
         heureCompteur = 0;
         heureActualTime = 0f;
-
-        playerTransform.position = playerSpawn.position; // Reset the player position
-        Inventory.instance.TrashReset(); // Reset the trash count 
+        playerTransform.position = playerSpawn.position; // Reset la position du joueur
+        Inventory.instance.TrashReset();
+        hourCountText.text = "8:00";
+        spawnZoneTrash.spawnedTrash = 0;
+        spawnZoneTrash.trashDestroy();
 
         fadeSystem.SetBool("FadeIn", false);
         fadeSystem.SetBool("FadeOut", true);
