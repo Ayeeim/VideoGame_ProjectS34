@@ -76,6 +76,8 @@ public class DaySystem : MonoBehaviour
         spawnZoneTrash.spawnedTrash = 0;
         spawnZoneTrash.trashDestroy();
 
+
+        // Aniamtion de fade In fade Out
         fadeSystem.SetBool("FadeIn", false);
         fadeSystem.SetBool("FadeOut", true);
     }
