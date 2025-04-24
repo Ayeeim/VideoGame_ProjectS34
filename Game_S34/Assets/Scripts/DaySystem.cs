@@ -77,7 +77,7 @@ public class DaySystem : MonoBehaviour
         Inventory.instance.TrashReset();
         hourCountText.text = "8:00";
         spawnZoneTrash.spawnedTrash = 0;
-        spawnZoneTrash.trashDestroy();
+        spawnZoneTrash.TrashDestroy();
 
 
         // Aniamtion de fade In fade Out
