@@ -7,7 +7,7 @@ public class SaveSystem : MonoBehaviour
     public InputActionReference saveAction; //Bouton sauvegarde temporaire
     public InputActionReference loadAction;
     public InputActionReference resetAction;
-    private float lastToggleTime; //Pour eviter le spam de l'UI
+    private float lastToggleTime; //Pour eviter le spam
 
     private void FixedUpdate()
     {
