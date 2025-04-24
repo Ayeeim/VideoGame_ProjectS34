@@ -5,6 +5,7 @@ public class Inventory : MonoBehaviour
 {
 
     public int trashCount;
+    public string activeItem;
 
     public DaySystem daySystem;
 
@@ -14,7 +15,7 @@ public class Inventory : MonoBehaviour
     // Awake is called before the game starts
     private void Awake()
     {
-        if(instance!=null)
+        if (instance != null)
         {
             // Check si il n'y a bien qu'un seul inventaire, sinon envoie le message d'erreur ci-dessous
             Debug.LogWarning("Il y a plus d'une instance de inventory dans la scène.");

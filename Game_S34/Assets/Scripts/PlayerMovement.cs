@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     public float movementSpeed = 3f;
     private float sprintingSpeed =  6f;
 
+    public bool movementEnabled = true; //Variable pour empecher le personnage de se déplacer dans un menu
+
     public SpriteRenderer spriteRenderer;
 
     Vector2 dir;
@@ -69,8 +71,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + dir * movementSpeed * Time.fixedDeltaTime);
-        Flip(dir.x);
+        if (movementEnabled == false) //Verif qu'on est pas dans un menu
+        {
+            rb.MovePosition(rb.position + dir * movementSpeed * Time.fixedDeltaTime);
+            Flip(dir.x);
+        }
     }
 
     void Flip(float _velocity)
