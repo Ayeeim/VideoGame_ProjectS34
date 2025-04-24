@@ -33,6 +33,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "OpenMenu",
+                    "type": "Button",
+                    "id": "79394274-85ac-43e6-9696-fd6ac4062c01",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Save",
                     "type": "Button",
                     "id": "7ea78b4e-4093-4068-8e56-b434c7511a71",
@@ -245,6 +254,17 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Reset",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e0253fe1-fc97-437c-8936-a5e1ffe2b61f",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "OpenMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -119,6 +119,15 @@ public partial class @PlayerControler: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""OpenMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""79394274-85ac-43e6-9696-fd6ac4062c01"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Save"",
                     ""type"": ""Button"",
                     ""id"": ""7ea78b4e-4093-4068-8e56-b434c7511a71"",
@@ -331,6 +340,17 @@ public partial class @PlayerControler: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""Reset"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e0253fe1-fc97-437c-8936-a5e1ffe2b61f"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""OpenMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -921,6 +941,7 @@ public partial class @PlayerControler: IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_PickUp = m_Player.FindAction("PickUp", throwIfNotFound: true);
         m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
+        m_Player_OpenMenu = m_Player.FindAction("OpenMenu", throwIfNotFound: true);
         m_Player_Save = m_Player.FindAction("Save", throwIfNotFound: true);
         m_Player_Load = m_Player.FindAction("Load", throwIfNotFound: true);
         m_Player_Reset = m_Player.FindAction("Reset", throwIfNotFound: true);
@@ -1020,6 +1041,7 @@ public partial class @PlayerControler: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_PickUp;
     private readonly InputAction m_Player_Run;
+    private readonly InputAction m_Player_OpenMenu;
     private readonly InputAction m_Player_Save;
     private readonly InputAction m_Player_Load;
     private readonly InputAction m_Player_Reset;
@@ -1046,6 +1068,10 @@ public partial class @PlayerControler: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Run".
         /// </summary>
         public InputAction @Run => m_Wrapper.m_Player_Run;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/OpenMenu".
+        /// </summary>
+        public InputAction @OpenMenu => m_Wrapper.m_Player_OpenMenu;
         /// <summary>
         /// Provides access to the underlying input action "Player/Save".
         /// </summary>
@@ -1093,6 +1119,9 @@ public partial class @PlayerControler: IInputActionCollection2, IDisposable
             @Run.started += instance.OnRun;
             @Run.performed += instance.OnRun;
             @Run.canceled += instance.OnRun;
+            @OpenMenu.started += instance.OnOpenMenu;
+            @OpenMenu.performed += instance.OnOpenMenu;
+            @OpenMenu.canceled += instance.OnOpenMenu;
             @Save.started += instance.OnSave;
             @Save.performed += instance.OnSave;
             @Save.canceled += instance.OnSave;
@@ -1122,6 +1151,9 @@ public partial class @PlayerControler: IInputActionCollection2, IDisposable
             @Run.started -= instance.OnRun;
             @Run.performed -= instance.OnRun;
             @Run.canceled -= instance.OnRun;
+            @OpenMenu.started -= instance.OnOpenMenu;
+            @OpenMenu.performed -= instance.OnOpenMenu;
+            @OpenMenu.canceled -= instance.OnOpenMenu;
             @Save.started -= instance.OnSave;
             @Save.performed -= instance.OnSave;
             @Save.canceled -= instance.OnSave;
@@ -1452,6 +1484,13 @@ public partial class @PlayerControler: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnRun(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "OpenMenu" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnOpenMenu(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Save" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
