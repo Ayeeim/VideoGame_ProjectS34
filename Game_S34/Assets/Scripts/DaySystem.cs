@@ -32,7 +32,7 @@ public class DaySystem : MonoBehaviour
 
     private void Update()
     {
-        if (targetTime > actualTime && dayCount < 8 && onPauseMenu != true)
+        if (targetTime > actualTime && dayCount <= 7 && onPauseMenu != true)
         {
             actualTime += Time.deltaTime;
             heureActualTime += Time.deltaTime;

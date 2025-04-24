@@ -5,8 +5,6 @@ public class SpawnZoneTrash : MonoBehaviour
     [SerializeField] private GameObject[] trashPrefab;
     [SerializeField] Vector2 zoneSize;
 
-    public bool test = false;
-
     public DaySystem daySystem;
     public int spawnedTrash;
 
@@ -15,7 +13,7 @@ public class SpawnZoneTrash : MonoBehaviour
 
     void Update()
     {
-        if (test == true && daySystem.trashObjective > spawnedTrash)
+        if (daySystem.trashObjective > spawnedTrash)
         {
             GameObject instantiated = Instantiate(trashPrefab[Random.Range(0,3)]);
 
