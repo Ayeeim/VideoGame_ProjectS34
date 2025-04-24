@@ -23,7 +23,7 @@ public class SaveSystem : MonoBehaviour
             }
             if (resetAction.action.IsPressed())
             {
-                resetSave();
+                ResetSave();
             }
             lastToggleTime = Time.time;
         }
@@ -60,7 +60,7 @@ public class SaveSystem : MonoBehaviour
 
     }
 
-    public void resetSave()
+    public void ResetSave()
     {
         string filePath = Application.persistentDataPath + "/save.json";
 
