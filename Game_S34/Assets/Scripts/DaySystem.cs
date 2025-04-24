@@ -83,5 +83,6 @@ public class DaySystem : MonoBehaviour
         // Aniamtion de fade In fade Out
         fadeSystem.SetBool("FadeIn", false);
         fadeSystem.SetBool("FadeOut", true);
+        saveSystem.SaveToJson();
     }
 }
