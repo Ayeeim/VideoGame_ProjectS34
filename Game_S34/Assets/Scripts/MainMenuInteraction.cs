@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuInteraction : MonoBehaviour
 {
-    public GameObject panel;
     public SaveSystem saveSystem;
     public Button btnPlay;
 

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class SettingsInteraction : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class SettingsInteraction : MonoBehaviour
     public bool isOpen;
     public DaySystem daySystem;
     public PlayerMovement playerMovement;
+    public SaveSystem saveSystem;
 
 
 
@@ -41,6 +43,13 @@ public class SettingsInteraction : MonoBehaviour
         isOpen = false;
         daySystem.onPauseMenu = false;
         playerMovement.movementEnabled = true;
+    }
+
+    public void MainMenu()
+    {
+        saveSystem.SaveToJson();
+        SceneManager.LoadScene("main_menu");//Changement de scene
+        Debug.Log("Retour au menu principal");
     }
 
 
