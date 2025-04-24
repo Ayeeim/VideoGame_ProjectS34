@@ -5,6 +5,7 @@ public class SpawnZoneTrash : MonoBehaviour
     [SerializeField] private GameObject[] trashPrefab;
     [SerializeField] Vector2 zoneSize;
 
+    public PlayerMission playerMission;
     public DaySystem daySystem;
     public int spawnedTrash;
 
@@ -33,14 +34,15 @@ public class SpawnZoneTrash : MonoBehaviour
         Gizmos.DrawWireCube(transform.position, zoneSize);
     }
 
-    public void trashDestroy()
+    public void TrashDestroy()
     {
         trashToFind = GameObject.FindGameObjectsWithTag("Trash");
         trashLeftCount = trashToFind.Length;
 
         foreach (GameObject trash in trashToFind) 
         { 
-            Destroy(trash); 
+            Destroy(trash);
+            playerMission.TakeChaos(1);
         }
     }
 }
