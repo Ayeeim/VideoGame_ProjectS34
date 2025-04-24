@@ -105,10 +105,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 240
-        height: 123
+        width: 80
+        height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -117,6 +117,50 @@ TextureImporter:
       bones: []
       spriteID: 56c9204f628fb3110800000000000000
       internalID: 1241858968456961125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: abandonned_house_1
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 80
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 829b4be59a6246d44bb92f54f7e3a3eb
+      internalID: 323644858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: abandonned_house_2
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 80
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78c52c34139a16141b81f19b55b1f2b1
+      internalID: -760484766
       vertices: []
       indices: 
       edges: []
@@ -136,6 +180,8 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       abandonned_house_0: 1241858968456961125
+      abandonned_house_1: 323644858
+      abandonned_house_2: -760484766
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
