@@ -4,6 +4,7 @@ using UnityEngine;
 public class DaySystem : MonoBehaviour
 {
     public int dayCount = 1;
+    public SaveSystem saveSystem;
     public TextMeshProUGUI dayCountText;
     public TextMeshProUGUI hourCountText;
     public int trashObjective = 35;
@@ -28,6 +29,8 @@ public class DaySystem : MonoBehaviour
     private void Awake()
     {
         playerSpawn = GameObject.FindGameObjectWithTag("PlayerSpawn").transform;
+        saveSystem.LoadFromJSon();
+        dayCountText.text = "Jour " + dayCount.ToString();
     }
 
     private void Update()
