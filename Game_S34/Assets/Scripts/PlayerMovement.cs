@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (movementEnabled == false) //Verif qu'on est pas dans un menu
+        if (movementEnabled) //Verif qu'on est pas dans un menu
         {
             rb.MovePosition(rb.position + dir * movementSpeed * Time.fixedDeltaTime);
             Flip(dir.x);
