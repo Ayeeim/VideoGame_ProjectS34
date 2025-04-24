@@ -6,8 +6,16 @@ public class MainMenuInteraction : MonoBehaviour
 {
     public GameObject panel;
     public SaveSystem saveSystem;
+    public Button btnPlay;
 
-
+    private void Awake()
+    {
+        string filePath = Application.persistentDataPath + "/save.json";
+        if (System.IO.File.Exists(filePath))
+        {
+            btnPlay.interactable = true;
+        }
+    }
     public void QuitGame()
     {
         Debug.Log("Quitter le jeu...");
