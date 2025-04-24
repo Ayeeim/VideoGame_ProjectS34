@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Maison_Taf.png_4_0: 6901214578698519953
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
