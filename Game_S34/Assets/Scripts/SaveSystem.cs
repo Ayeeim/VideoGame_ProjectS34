@@ -6,16 +6,26 @@ public class SaveSystem : MonoBehaviour
     public DaySystem daySystem;
     public InputActionReference saveAction; //Bouton sauvegarde temporaire
     public InputActionReference loadAction;
+    public InputActionReference resetAction;
+    private float lastToggleTime; //Pour eviter le spam de l'UI
 
     private void FixedUpdate()
     {
-        if(saveAction.action.IsPressed())
+        if (Time.time - lastToggleTime > 0.3f)
         {
-            SaveToJson();
-        }
-        if (loadAction.action.IsPressed())
-        {
-            LoadFromJSon();
+            if (saveAction.action.IsPressed())
+            {
+                SaveToJson();
+            }
+            if (loadAction.action.IsPressed())
+            {
+                LoadFromJSon();
+            }
+            if (resetAction.action.IsPressed())
+            {
+                resetSave();
+            }
+            lastToggleTime = Time.time;
         }
     }
     public void SaveToJson()
@@ -27,6 +37,7 @@ public class SaveSystem : MonoBehaviour
         string path = Application.persistentDataPath + "/save.json";
         System.IO.File.WriteAllText(path, json);
         Debug.Log("Sauvegarde effectuée !");
+        Debug.Log(path);
 
     }
     public void LoadFromJSon()
@@ -47,6 +58,21 @@ public class SaveSystem : MonoBehaviour
         daySystem.dayCountText.text = "Jour " + daySystem.dayCount.ToString();
 
 
+    }
+
+    public void resetSave()
+    {
+        string filePath = Application.persistentDataPath + "/save.json";
+
+        if (System.IO.File.Exists(filePath))
+        {
+            System.IO.File.Delete(filePath);
+            Debug.Log("Fichier de sauvegarde supprimé.");
+        }
+        else
+        {
+            Debug.Log("Aucun fichier de sauvegarde à supprimer");
+        }
     }
 }
 
