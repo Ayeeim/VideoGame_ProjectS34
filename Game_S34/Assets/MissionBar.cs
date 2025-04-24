@@ -19,6 +19,6 @@ public class MissionBar : MonoBehaviour
     {
         slider.value = chaos;
 
-        fill.color= gradient.Evaluate(slider.normalizedValue);
+        fill.color = gradient.Evaluate(slider.normalizedValue);
     }
 }

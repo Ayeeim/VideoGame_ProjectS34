@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DaySystem : MonoBehaviour
 {
@@ -29,7 +30,7 @@ public class DaySystem : MonoBehaviour
     private void Awake()
     {
         playerSpawn = GameObject.FindGameObjectWithTag("PlayerSpawn").transform;
-        saveSystem.LoadFromJSon();
+        saveSystem.SaveToJson();
         dayCountText.text = "Jour " + dayCount.ToString();
     }
 
@@ -53,11 +54,13 @@ public class DaySystem : MonoBehaviour
             fadeSystem.SetBool("FadeIn", true);
             fadeSystem.SetBool("FadeOut", false);
         }
-        else
+        else if (dayCount > 7)
         {
             Debug.Log("Rémi est l'homme le plus chanceux de tout les temps...");
             Debug.Log("Fin du jeu");
+            SceneManager.LoadScene("winning_screen");
         }
+        
     }
 
     public void DayEnd()
@@ -66,7 +69,7 @@ public class DaySystem : MonoBehaviour
         Debug.Log("One day has passed");
 
         dayCount++;
-        trashObjective = Mathf.RoundToInt(trashObjective + 35 * (0.1f * dayCount));
+        trashObjective = Mathf.RoundToInt(trashObjective + 20 * (0.1f * dayCount));
         dayCountText.text = "Jour " + dayCount.ToString();
 
         // Reset les variables communes et les objets dans la scène
