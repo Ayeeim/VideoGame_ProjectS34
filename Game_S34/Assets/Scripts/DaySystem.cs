@@ -26,6 +26,7 @@ public class DaySystem : MonoBehaviour
     public Transform playerTransform;
 
     [SerializeField] private SpawnZoneTrash spawnZoneTrash;
+    [SerializeField] private EventManager eventManager;
 
     private void Awake()
     {
@@ -83,9 +84,14 @@ public class DaySystem : MonoBehaviour
         spawnZoneTrash.TrashDestroy();
 
 
-        // Aniamtion de fade In fade Out
+        // Animation de fade In fade Out
         fadeSystem.SetBool("FadeIn", false);
         fadeSystem.SetBool("FadeOut", true);
+
+        //Prise de dmg Evenements
+        eventManager.TakeDamageEvent();
+
+        //Sauvegarde
         saveSystem.SaveToJson();
     }
 }
