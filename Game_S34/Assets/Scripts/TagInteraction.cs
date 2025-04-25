@@ -44,12 +44,13 @@ public class TagInteraction : MonoBehaviour
     {
         if(isInRange && interAction.action.IsPressed() && eventManager.isTag && inventory.activeItem == "brosse")
         {
+            if (inventory.activeItem != "brosse")
+            {
+                Debug.Log("Vous n'avez pas de brosse");
+            }
             StartCoroutine(CleanTag());
         }
-        if(inventory.activeItem != "brosse")
-        {
-            Debug.Log("Vous n'avez pas de brosse");
-        }
+        
     }
 
 }
