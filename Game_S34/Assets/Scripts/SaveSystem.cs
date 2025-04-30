@@ -8,6 +8,7 @@ public class SaveSystem : MonoBehaviour
     public InputActionReference loadAction;
     public InputActionReference resetAction;
     private float lastToggleTime; //Pour eviter le spam
+    public PlayerMission playerMission;
 
     private void FixedUpdate()
     {
@@ -32,6 +33,8 @@ public class SaveSystem : MonoBehaviour
     {
         SaveData data = new SaveData();
         data.dayCount = daySystem.dayCount;
+        data.currentChaos = playerMission.currentChaos;
+        data.minChaos = playerMission.minChaos;
 
         string json = JsonUtility.ToJson(data);
         string path = Application.persistentDataPath + "/save.json";
@@ -49,6 +52,8 @@ public class SaveSystem : MonoBehaviour
             SaveData data = JsonUtility.FromJson<SaveData>(json);
             int dayCount = data.dayCount;
             daySystem.dayCount = dayCount;
+            playerMission.currentChaos = data.currentChaos;
+            playerMission.minChaos= data.minChaos;
             Debug.Log("Chargement effectuée");
         } else
         {
@@ -80,5 +85,7 @@ public class SaveSystem : MonoBehaviour
 public class SaveData
 {
     public int dayCount;
+    public int minChaos;
+    public int currentChaos;
 }
 
