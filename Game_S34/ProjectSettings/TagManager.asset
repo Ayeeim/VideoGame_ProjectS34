@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Cinemachine
   - InteractUI
+  - Trash
+  - fade
+  - PlayerSpawn
   layers:
   - Default
   - TransparentFX
@@ -42,6 +45,12 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 1465002325
+    locked: 0
+  - name: House
+    uniqueID: 1183296287
     locked: 0
   m_RenderingLayers:
   - Default

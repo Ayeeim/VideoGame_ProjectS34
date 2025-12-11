@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,8 +11,11 @@ public class PlayerMovement : MonoBehaviour
     public bool isSprinting = false;
 
     public float movementSpeed = 3f;
-    public float sprintingSpeed =  6f;
+    private float sprintingSpeed =  6f;
 
+    public bool movementEnabled = true; //Variable pour empecher le personnage de se déplacer dans un menu
+
+    public SpriteRenderer spriteRenderer;
 
     Vector2 dir;
 
@@ -41,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void onSprintActionCanceled(InputAction.CallbackContext obj)
     {
-        movementSpeed = 3f;
+        movementSpeed = 4f;
     }
 
     private void onSprintActionPerf(InputAction.CallbackContext obj)
@@ -68,17 +70,24 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + dir * movementSpeed * Time.fixedDeltaTime);
-
-        /*if (Input.GetKey(KeyCode.LeftControl))
+        if (movementEnabled) //Verif qu'on est pas dans un menu
         {
-            isSprinting= true;
-            movementSpeed = sprintingSpeed;
+            rb.MovePosition(rb.position + dir * movementSpeed * Time.fixedDeltaTime);
+            Flip(dir.x);
         }
-        else
+    }
+
+    void Flip(float _velocity)
+    {
+        // Turn the player sprite either to the left or to the right
+        if (_velocity >= 0.1f)
         {
-            isSprinting = false;
-            movementSpeed = 3f;
-        }*/
+            spriteRenderer.flipX = false;
+
+        }
+        else if (_velocity < -0.1f)
+        {
+            spriteRenderer.flipX = true;
+        }
     }
 }

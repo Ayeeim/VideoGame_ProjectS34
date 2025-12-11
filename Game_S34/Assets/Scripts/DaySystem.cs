@@ -1,0 +1,97 @@
+using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class DaySystem : MonoBehaviour
+{
+    public int dayCount = 1;
+    public SaveSystem saveSystem;
+    public TextMeshProUGUI dayCountText;
+    public TextMeshProUGUI hourCountText;
+    public int trashObjective = 35;
+
+    // Timer qui s'exécute, dès que le timer se fini un nouveau jour est lancé
+    // Le timer est réglé sur 3 min le jour s'effectue sur 12 heure fictive (un rythme de 15sec pour une heure -> 15*12=180)
+
+    public float targetTime = 180.0f;
+    public float actualTime = 0f;
+
+    [SerializeField] private int heureCompteur = 0;
+    public float heureActualTime = 0f; 
+
+    public Animator fadeSystem;
+    public bool onPauseMenu = false;
+
+    private Transform playerSpawn;
+    public Transform playerTransform;
+
+    [SerializeField] private SpawnZoneTrash spawnZoneTrash;
+    [SerializeField] private EventManager eventManager;
+
+    private void Awake()
+    {
+        playerSpawn = GameObject.FindGameObjectWithTag("PlayerSpawn").transform;
+        saveSystem.SaveToJson();
+        dayCountText.text = "Jour " + dayCount.ToString();
+    }
+
+    private void Update()
+    {
+        if (targetTime > actualTime && dayCount <= 7 && onPauseMenu != true)
+        {
+            actualTime += Time.deltaTime;
+            heureActualTime += Time.deltaTime;
+
+            if (heureActualTime >= 15f)
+            {
+                heureCompteur++;
+                heureActualTime = 0;
+
+                hourCountText.text = (heureCompteur + 8).ToString() + ":00";
+            }
+        }
+        else if (targetTime < actualTime)
+        {
+            fadeSystem.SetBool("FadeIn", true);
+            fadeSystem.SetBool("FadeOut", false);
+        }
+        else if (dayCount > 7)
+        {
+            Debug.Log("Rémi est l'homme le plus chanceux de tout les temps...");
+            Debug.Log("Fin du jeu");
+            SceneManager.LoadScene("winning_screen");
+        }
+        
+    }
+
+    public void DayEnd()
+    {
+        // est appelé à la fin de la journée (/à la fin de l'aniamtion fadeOut)
+        Debug.Log("One day has passed");
+
+        dayCount++;
+        trashObjective = Mathf.RoundToInt(trashObjective + 20 * (0.1f * dayCount));
+        dayCountText.text = "Jour " + dayCount.ToString();
+
+        // Reset les variables communes et les objets dans la scène
+        actualTime = 0f;
+        heureCompteur = 0;
+        heureActualTime = 0f;
+        playerTransform.position = playerSpawn.position; // Reset la position du joueur
+        Inventory.instance.TrashReset();
+        hourCountText.text = "8:00";
+        spawnZoneTrash.spawnedTrash = 0;
+        spawnZoneTrash.TrashDestroy();
+
+
+        // Animation de fade In fade Out
+        fadeSystem.SetBool("FadeIn", false);
+        fadeSystem.SetBool("FadeOut", true);
+
+        //Prise de dmg Evenements
+        eventManager.TakeDamageEvent();
+
+        //Sauvegarde
+        saveSystem.SaveToJson();
+    }
+}
